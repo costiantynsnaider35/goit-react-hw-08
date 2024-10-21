@@ -23,9 +23,7 @@ const slice = createSlice({
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.items = state.items.filter((item) => item.id !== action.payload);
       })
-      .addCase(logout.fulfilled, (state) => {
-        state.items = [];
-      })
+      .addCase(logout.fulfilled, () => initialState)
       .addMatcher(
         isAnyOf(
           fetchContacts.pending,
