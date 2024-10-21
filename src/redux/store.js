@@ -19,13 +19,12 @@ const persistConfig = {
   key: "root-auth",
   version: 1,
   storage,
-  blacklist: ["filters"],
   whitelist: ["token"],
 };
 
 export const store = configureStore({
   reducer: {
-    contacts: persistReducer(persistConfig, contactReducer),
+    contacts: contactReducer,
     filters: filterReducer,
     auth: persistReducer(persistConfig, authReduser),
   },
