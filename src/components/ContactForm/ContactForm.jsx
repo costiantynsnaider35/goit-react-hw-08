@@ -1,13 +1,16 @@
 import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
 import s from "./ContactForm.module.css";
-import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsOps";
+import { useDispatch, useSelector } from "react-redux";
+import { selectFilteredContacts } from "../../redux/contacts/selectors";
+import toast from "react-hot-toast";
+import { addContact } from "../../redux/contacts/operations";
 
 const ContactForm = () => {
   const dispatch = useDispatch();
+  const filteredContacts = useSelector(selectFilteredContacts);
 
-  const validNumber = /^\d{3}-\d{3}-\d{4}$/;
+  const validNumber = /^\d{3}-\d{2}-\d{2}$/;
 
   const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -34,7 +37,23 @@ const ContactForm = () => {
       name: values.name,
       number: values.number,
     };
-    dispatch(addContact(addNewContact));
+
+    const duplicateContact = filteredContacts.some(
+      (contact) => contact.number === addNewContact.number
+    );
+    if (duplicateContact) {
+      toast.error("This contact is already in your phone book!");
+
+      return;
+    }
+
+    dispatch(addContact(addNewContact))
+      .then(() => {
+        toast.success("Contact successfully added to your phone book!");
+      })
+      .catch(() => {
+        toast.error("Contact has not been added to your phone book!");
+      });
     options.resetForm();
   };
 

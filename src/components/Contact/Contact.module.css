@@ -1,31 +1,57 @@
 .contact {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  min-width: 300px;
+  max-width: 300px;
+  width: 100%; /* Заставляем карточку занимать всю ширину контейнера */
+  padding: 8px; /* Отступы внутри карточки */
+  border: 1px solid #ccc; /* Граница для визуального отделения карточек */
+  border-radius: 10px; /* Закругленные углы */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для эффекта */
+  display: flex; /* Используем flexbox для вертикального выравнивания */
+  flex-direction: column; /* Располагаем элементы в колонку */
+  align-items: center; /* Центруем элементы по горизонтали */
+  background-color: #f0f8ff; /* Установите желаемый цвет фона карточки */
 }
+.avatar {
+  width: 50px; /* Ширина для контейнера аватара */
+  height: 50px; /* Высота для контейнера аватара */
+  background-color: #61dafb; /* Цвет фона для аватара */
+  border-radius: 50%; /* Закругленные углы для круга */
+  display: flex; /* Используем флекс для центрирования иконки */
+  align-items: center; /* Центрируем по вертикали */
+  justify-content: center; /* Центрируем по горизонтали */
+  margin-bottom: 10px; /* Отступ снизу для аватара */
+}
+
+.avatarIcon {
+  font-size: 30px; /* Размер иконки */
+  color: white; /* Цвет иконки */
+}
+
 .containerList {
-  display: flex;
-  flex-direction: column;
+  width: 100%; /* Заставляем контейнер занимать всю ширину карточки */
 }
+
 .contactInfo {
-  display: flex;
-  gap: 5px;
-  font-weight: bold;
+  width: 100%; /* Заставляем текст занимать всю ширину */
+  text-align: center; /* Центрируем текст */
+  font-weight: bolder; /* Делаем текст еще более жирным */
+  margin: 10px 0; /* Отступы между элементами */
+  font-size: 22px; /* Увеличиваем размер шрифта в пикселях */
+  color: #2c3e50; /* Устанавливаем темный цвет текста для лучшей видимости */
 }
-.icon {
-  color: black;
-}
+
 .deleteBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30px;
-  background-color: #687dd8;
-  font-weight: bold;
+  margin-top: 10px; /* Отступ сверху для кнопки */
+  padding: 10px; /* Увеличиваем отступы кнопки */
+  font-size: 22px; /* Увеличиваем размер шрифта кнопки в пикселях */
+  background-color: #e63946; /* Задайте желаемый цвет фона кнопки */
+  color: white; /* Цвет текста кнопки */
+  border: none; /* Убираем границу кнопки */
+  border-radius: 5px; /* Закругленные углы кнопки */
+  cursor: pointer; /* Указываем, что кнопка кликабельная */
+  transition: background-color 0.3s; /* Плавный переход при наведении */
 }
-.deleteBtn:hover,
-.deleteBtn:focus {
-  transition: border-color 0.25s;
-  border-color: black;
+
+.deleteBtn:hover {
+  background-color: #d62839; /* Цвет кнопки при наведении */
 }
